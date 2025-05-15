@@ -25,4 +25,8 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: compiled-document
+<<<<<<< HEAD
           path: output.pdf
+=======
+          path: output.pdf
+>>>>>>> 6d20646b3dca4a943880ed031a542333ecff1dfe
