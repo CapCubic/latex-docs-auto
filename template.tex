@@ -1,0 +1,48 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage{hyperref}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{caption}
+
+\title{{{{ project_name }}} Documentation \\[0.5em] \large Version: {{{{ version }}}}}
+\author{{{{ author }}}}
+\date{{{{ date }}}}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+{{{ abstract }}}
+\end{abstract}
+
+\section{Installation}
+{{{ installation }}}
+
+\section{Usage}
+{{{ usage }}}
+
+\section{Methodology}
+{{{ methodology }}}
+
+\section{Results}
+{{{ results }}}
+
+\section{Future Work}
+{{{ future_work }}}
+
+\section{References}
+\bibliographystyle{plain}
+\bibliography{references}
+% Alternatively, inline references:
+\begin{itemize}
+{% for ref in references %}
+    \item [{{ ref.citation_key }}] {{{ ref.entry }}}
+{% endfor %}
+\end{itemize}
+
+\end{document}

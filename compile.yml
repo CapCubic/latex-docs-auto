@@ -1,0 +1,34 @@
+name: LaTeX Documentation Build
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python environment
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install Python dependencies
+        run: pip install jinja2
+
+      - name: Run documentation generator
+        run: python generate_docs.py
+
+      - name: Install LaTeX environment
+        run: sudo apt-get update && sudo apt-get install texlive-full -y
+
+      - name: Compile LaTeX document
+        run: pdflatex -output-directory output output/documentation.tex
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: Documentation PDF
+          path: output/documentation.pdf
