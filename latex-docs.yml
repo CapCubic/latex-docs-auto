@@ -1,0 +1,28 @@
+name: LaTeX Documentation Build
+on:
+  push:
+    branches:
+      - main  # Triggers when changes are pushed to main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install LaTeX dependencies
+        run: |
+          sudo apt update
+          sudo apt install texlive-latex-base texlive-fonts-recommended texlive-latex-extra
+
+      - name: Compile LaTeX document
+        run: |
+          pdflatex your-document.tex
+          mv your-document.pdf output.pdf
+
+      - name: Upload PDF as an artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: compiled-document
+          path: output.pdf
